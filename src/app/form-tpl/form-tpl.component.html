@@ -1,0 +1,37 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-horizontal">
+    <div class="form-group" [ngClass]="setClass(nome)">
+    <div class="col-sm-12">
+      <label>Nome:</label>
+      <input type="text" class="form-control" #nome=ngModel name="nome" [(ngModel)]=user.nome required>      
+      <app-error-form [field]="nome"></app-error-form>
+    </div>
+  </div>
+  <div class="form-group" [ngClass]="setClass(sobrenome)">
+    <div class="col-sm-12">      
+        <label for="pwd">email:</label>
+        <input type="text" class="form-control" #sobrenome=ngModel name="sobrenome" [(ngModel)]=user.sobrenome required>
+        <app-error-form [field]="sobrenome"></app-error-form>        
+      </div>  
+  </div>
+  <div ngModelGroup="endereco">
+      <div class="form-group">
+          <div class="col-sm-3" [ngClass]="setClass(rua)">
+              <label for="pwd">Rua:</label>
+              <input type="text" class="form-control" #rua=ngModel name="rua" [(ngModel)]=user.rua required>
+              <app-error-form [field]="rua"></app-error-form>                  
+          </div>
+          <div class="col-sm-6" [ngClass]="setClass(bairro)">
+              <label for="pwd">Bairro:</label>
+              <input type="text" class="form-control" #bairro=ngModel name="bairro" [(ngModel)]=user.bairro required>
+              <app-error-form [field]="bairro"></app-error-form>        
+          </div>
+          <div class="col-sm-3" [ngClass]="setClass(cep)">
+              <label for="pwd">cep:</label>
+              <input type="text" class="form-control" #cep=ngModel name="cep" [(ngModel)]=user.cep required>
+              <app-error-form [field]="cep"></app-error-form>        
+          </div>
+      </div>
+  </div>  
+  
+  <button type="submit" [disabled]="!f.valid" class="btn btn-default">Submit</button>
+</form>
